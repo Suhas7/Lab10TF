@@ -1,0 +1,7 @@
+Dependencies for Project 'Logo', Target 'Logo': (DO NOT MODIFY !)
+F (.\Startup.s)(0x5AC3F503)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\rit128x96x4.c)(0x5AC3F503)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I.. -I..\..\.. -I..\inc -I..\driverlib\rvmdk -I..\driverlib-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\rit128x96x4.o --omf_browse .\rit128x96x4.crf --depend .\rit128x96x4.d)
+F (.\LogoTestMain.c)(0x5AC3F503)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I.. -I..\..\.. -I..\inc -I..\driverlib\rvmdk -I..\driverlib-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\logotestmain.o --omf_browse .\logotestmain.crf --depend .\logotestmain.d)
+F (.\logo.c)(0x5AC3F502)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I.. -I..\..\.. -I..\inc -I..\driverlib\rvmdk -I..\driverlib-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\logo.o --omf_browse .\logo.crf --depend .\logo.d)
+I (rit128x96x4.h)(0x5AC3F503)
+F (..\driverlib\rvmdk\driverlib.lib)(0x00000000)()

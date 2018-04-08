@@ -1,0 +1,2 @@
+Dependencies for Project 'Logo', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4C818260)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Keil\ARM\INC" -I "C:\Keil\ARM\INC\Luminary" --list "Startup.lst" --xref -o "Startup.o" --depend "Startup.d")

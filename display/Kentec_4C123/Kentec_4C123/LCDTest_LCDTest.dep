@@ -1,0 +1,14 @@
+Dependencies for Project 'LCDTest', Target 'LCDTest': (DO NOT MODIFY !)
+F (.\startup.s)(0x5AC3CE29)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1" -I../-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\PLL.c)(0x5AC3CE28)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..  --fpu=fpv4-sp --c99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-Drvmdk -DPART_LM4F120H5QR -DTM4C1233H6PM-o .\pll.o --omf_browse .\pll.crf --depend .\pll.d)
+I (PLL.h)(0x5AC3CE28)
+F (.\SSD2119.c)(0x5AC3FB50)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..  --fpu=fpv4-sp --c99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-Drvmdk -DPART_LM4F120H5QR -DTM4C1233H6PM-o .\ssd2119.o --omf_browse .\ssd2119.crf --depend .\ssd2119.d)
+I (lm4f120h5qr.h)(0x5AC3CE28)
+I (SSD2119.h)(0x5AC3CE28)
+F (.\random.s)(0x5AC3CE28)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1" -I../-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123--list .\random.lst --xref -o .\random.o --depend .\random.d)
+F (.\LCDTestMain.c)(0x5AC3D3E4)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..  --fpu=fpv4-sp --c99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-Drvmdk -DPART_LM4F120H5QR -DTM4C1233H6PM-o .\lcdtestmain.o --omf_browse .\lcdtestmain.crf --depend .\lcdtestmain.d)
+I (lm4f120h5qr.h)(0x5AC3CE28)
+I (SSD2119.h)(0x5AC3CE28)
+I (PLL.h)(0x5AC3CE28)
+I (random.h)(0x5AC3CE28)
+I (LCDTests.h)(0x5AC3FE38)

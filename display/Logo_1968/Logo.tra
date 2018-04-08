@@ -1,0 +1,22 @@
+*** Creating Trace Output File 'Logo.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"rit128x96x4.o"'
+### List of Objects: adding '"logotestmain.o"'
+### List of Objects: adding '"logo.o"'
+### List of Objects: adding '"..\driverlib\rvmdk\driverlib.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup.o" "rit128x96x4.o" "logotestmain.o" "logo.o" "D:\My Dropbox\ArmBook\Individual Examples\driverlib\rvmdk\driverlib.lib" --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Logo.map" -o Logo.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'Logo.axf'
+### ADS-LD Command File: 'Logo.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'Logo.lnp', Handle=0x00000284
+### Writing '.lnp' file
+### ADS-LD Command file 'Logo.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

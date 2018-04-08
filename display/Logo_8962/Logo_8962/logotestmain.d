@@ -1,0 +1,1 @@
+.\logotestmain.o: LogoTestMain.c

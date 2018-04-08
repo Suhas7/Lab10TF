@@ -1,0 +1,1 @@
+"./startup_ccsValvanoWare.obj" "./rit128x96x4.obj" "./logo.obj" "./LogoTestMain.obj" -l"rtsv7M3_T_le_eabi.lib" -l"D:\Dropbox\CCS_1968\CCSValvanoWareWorkspace\driverlib\ccs\Debug\driverlib.lib" "../lm3s1968.cmd" 
