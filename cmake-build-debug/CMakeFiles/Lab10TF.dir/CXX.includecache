@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Sound.cpp
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/hardware/Controller.cpp
+cmath
+-
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/hardware/Controller.hpp
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/main.cpp
+/physics/Actors.hpp
+-
+/audio/Sound.hpp
+-
+/display/kentec.hpp
+-
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/physics/Actors.hpp
+cmath
+-
+../hardware/Controller.hpp
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/hardware/Controller.hpp
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/physics/Physics.cpp
+Actors.hpp
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/physics/Actors.hpp
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/workpad.cpp
+

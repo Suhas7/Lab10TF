@@ -1,0 +1,130 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Lab6.c
+stdint.h
+-
+tm4c123gh6pm.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/tm4c123gh6pm.h
+Sound.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Sound.h
+Piano.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Piano.h
+dac.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/dac.h
+TExaS.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/TExaS.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Sound.h
+stdint.h
+-
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/dac.h
+stdint.h
+-
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/FPU.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/lm4f120h5qr.h
+fpu.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/fpu.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/FPU.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/lm4f120h5qr.h
+fpu.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/fpu.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/LCDTestMain.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/lm4f120h5qr.h
+SSD2119.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.h
+PLL.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/PLL.h
+random.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/random.h
+LCDTests.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/LCDTests.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/LCDTests.h
+SSD2119.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/PLL.c
+PLL.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/PLL.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/PLL.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/lm4f120h5qr.h
+SSD2119.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/fpu.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/lm4f120h5qr.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/random.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/systick.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/lm4f120h5qr.h
+systick.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/systick.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/systick.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/LCDTestMain.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/lm4f120h5qr.h
+SSD2119.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.h
+PLL.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/PLL.h
+random.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/random.h
+LCDTests.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/LCDTests.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/LCDTests.h
+SSD2119.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/PLL.c
+PLL.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/PLL.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/PLL.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/lm4f120h5qr.h
+SSD2119.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/fpu.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/lm4f120h5qr.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/random.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/systick.c
+lm4f120h5qr.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/lm4f120h5qr.h
+systick.h
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/systick.h
+
+C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/systick.h
+

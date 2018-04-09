@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Lab10TF"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lab10TF">
+				<Option output="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Lab10TF.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab10TF"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lab10TF/fast">
+				<Option output="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Lab10TF.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab10TF/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/TExaS.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Lab6.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Sound.cpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/Sound.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/dac.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/audio/sBytes.hpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/FPU.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/FPU.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/FPU.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/FPU.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/LCDTestMain.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/LCDTests.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/PLL.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/PLL.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/SSD2119.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/images.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/lm4f120h5qr.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/random.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/systick.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/Kentec_4C123/systick.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/LCDTestMain.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/LCDTests.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/PLL.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/PLL.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/SSD2119.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/images.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/lm4f120h5qr.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/random.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/systick.c">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/display/systick.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/hardware/Controller.cpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/hardware/Controller.hpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/main.cpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/main.hpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/physics/Actors.hpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/physics/Physics.cpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/tm4c123gh6pm.h">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/workpad.cpp">
+			<Option target="Lab10TF"/>
+		</Unit>
+		<Unit filename="C:/Users/Suhas/Google Drive/College/EE319K/Labs/Lab10TF/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

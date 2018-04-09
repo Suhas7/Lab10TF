@@ -9,31 +9,23 @@
 int main(void){unsigned long i=0;
   // Set the clocking to run at 80MHz from the PLL.
   PLL_Init();
-
     // Initialize LCD
   LCD_Init();
-    
- 
     // Initialize RNG
     Random_Init(121213);
-
     // Initialize touchscreen GPIO
     Touch_Init();
-
-      
     for(;;) {
-        
         // TO PLAY WITH THESE, EMPTY THE SYSTICK OF TIMED
         // STUFF AND UNCOMMENT ONE TEST AT A TIME
         // - SOME MAY BE BROKEN NOW
-        
         //This file was modified to make a short animated
         //demonstration of the LCD driver.  Each test is
         //shown at least briefly, then the best footage
         //will be selected in post-production.
         //NOTE: To return this file to its previous
         //condition, un-comment the following lines in the
-        SysTick_Handler:
+        //SysTick_Handler:
         //touchDebug();
         LCD_DrawBMP(testSprite5BPP, 64,64);
 				while(1);
@@ -71,7 +63,6 @@ int main(void){unsigned long i=0;
         //charTest();
         //RandomCircle();
         //Random4BPPTestSprite();
-
     }
     
 }

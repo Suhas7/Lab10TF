@@ -27,26 +27,17 @@
 				double threshold = sDist*sDist;
 				return threshold>=(xDist+yDist) ? true:false;*/
 		}
-		void serviceCollision(Object& a, Object& b){ //
-			//resolve collisions
-			//bruteforce case division
-			//dynamic casts cost tho :(
-			if(isType<Wall>(a)){
-				if(isType<Wall>(b)) processWallWall(a,b);
-				if(isType<Archer>(b)) processWallArcher(a, dynamic_cast<Archer&>(b));
-				if(isType<Arrow>(b)) processWallArrow(a, dynamic_cast<Arrow&>(b));
-			}
-			if(isType<Archer>(a)){
-				if(isType<Wall>(b)) processWallArcher(b, dynamic_cast<Archer&>(a));
-				if(isType<Archer>(b)) processArcherArcher(dynamic_cast<Archer&>(a), dynamic_cast<Archer&>(b));
-				if(isType<Arrow>(b)) processArcherArrow(dynamic_cast<Archer&>(a), dynamic_cast<Arrow&>(b));
-			}
-			if(isType<Arrow>(a)){
-				if(isType<Wall>(b)) processWallArrow(b, dynamic_cast<Arrow&>(a));
-				if(isType<Archer>(b)) processArcherArrow(dynamic_cast<Archer&>(b), dynamic_cast<Arrow&>(a));
-				if(isType<Arrow>(b)) processArrowArrow(dynamic_cast<Arrow&>(a), dynamic_cast<Arrow&>(b));
-			}
-		}
+
+		void serviceCollision(Archer& a,Archer& b);
+		void serviceCollision(Archer& a,Arrow& b);
+		void serviceCollision(Archer& a,Wall& b);
+		void serviceCollision(Arrow& a,Archer& b){serviceCollision(b, a)};
+		void serviceCollision(Arrow& a,Arrow& b);
+		void serviceCollision(Arrow& a,Wall& b);
+		void serviceCollision(Wall& a,Archer& b) {serviceCollision(b, a)};
+		void serviceCollision(Wall& a,Arrow& b)  {serviceCollision(b, a)};
+		void serviceCollision(Wall& a,Wall& b);
+
         void processWallWall(Object& a, Object& b){return;}
         //phase thru?
         void processWallArcher(Object& a, Archer& b);
@@ -56,7 +47,7 @@
         //player halts both- key to wall jump, can wall hang
         //else:
         //halt the players Y velocity
-        //scale down X velocity
+        //scale down X velocity(?)
         void processWallArrow(Object& a, Arrow& b);
         //arrow halts x,y
         //halt arrow
