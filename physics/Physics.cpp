@@ -2,14 +2,20 @@
 
 //GENERAL PHYSICS
 	//MOVEMENT PROCESSING
-		void checkCollision(ActiveObject& a, ActiveObject& b){ //check if collider radii cross
-			float xDist = (a->xPos-b->xPos)*(a->xPos-b->xPos);
-			float yDist = (a->yPos-b->yPos)*(a->yPos-b->yPos);
-			float sDist = (a->colliderRadius+b->colliderRadius);
-			float threshold = sDist*sDist;
-			return threshold>=(xDist+yDist) ? true:false;
+		void checkCollision(Object& a, Object& b){ //check if collider radii cross
+			float xDist = (b.xPos-a.xPos);
+			float yDist = (b.yPos-a.yPos);
+			if(xDist<=(a.colliderWidth+b.colliderWidth)) return true;
+			if(yDist<=(a.colliderHeight+b.colliderHeight)) return true;
+			return false;
+			/* RADIAL IMPLEMENTATION
+				float xDist = (a->xPos-b->xPos)*(a->xPos-b->xPos);
+				float yDist = (a->yPos-b->yPos)*(a->yPos-b->yPos);
+				float sDist = (a->colliderRadius+b->colliderRadius);
+				float threshold = sDist*sDist;
+				return threshold>=(xDist+yDist) ? true:false;*/
 		}
-		void serviceCollision(ActiveObject& a, ActiveObject& b){ //
+		void serviceCollision(Object& a, Object& b){ //
 			//HOW TO CHECK isInstance??
 			//resolve collisions
 			//bruteforce case division
@@ -30,20 +36,21 @@
 			}
 		}
 		
-		void processWallWall(ActiveObject& a, ActiveObject& b);
+		void processWallWall(Object& a, Object& b) return;
 			//phase thru?
-		void processWallArcher(ActiveObject& a, ActiveObject& b);
+		void processWallArcher(Object& a, ActiveObject& b);
 			//set angle var to angle of collision
 			//wall/player: 
 				//if angle is not down quadrant:
 					//player halts both- key to wall jump, can wall hang
 				//else:
 					//halt the players Y velocity
-		void processWallArrow(ActiveObject& a, ActiveObject& b);
+					//scale down X velocity
+		void processWallArrow(Object& a, ActiveObject& b);
 			//arrow halts x,y
 			//halt arrow
 			//grounded=true
-		void processArcherArcher(ActiveObject& a, ActiveObject& b);
+		void processArcherArcher(ActiveObject& a,ActiveObject& b);
 			//if not upper quad: halts along axis of collision
 			//else: kill player bc booperoni
 		void processArcherArrow(ActiveObject& a, ActiveObject& b);
@@ -54,7 +61,7 @@
 		void processArrowArrow(ActiveObject& a, ActiveObject& b);
 			//arrow/arrow: halt both, slight upward/rand horizontal speed
 			//process angle of collision, send arrows opposite direction w scaled speed
-		void collisionAngle(ActiveObject& a, ActiveObject& b){
+		void collisionAngle(Object& a, Object& b){
 			float yDist = (a->yPos-b->yPos)*(a->yPos-b->yPos);
 			float xDist = (a->xPos-b->xPos)*(a->xPos-b->xPos);
 			return atan(yDist/xDist)*180/PI;
@@ -89,7 +96,6 @@
 		void ActiveObject::halt(){ this->haltX();this->haltY();this->haltR();}
 //ARCHER METHODS
 	//ARCHER STRUCTORS
-		//TO IMPLEMENT
 		void Archer::Archer(){
 			static int i=0;
 			this->playerID=i;
@@ -117,18 +123,16 @@
 			static int last = false;
 			if(bBut){
 				self->aiming=true;
-				aim = angle;
-				last=true
+				aim = this->ctrlr.getJAngle();
+				last=true;
 			}else{
-				if(last){shoot(aim);}
+				if(last){shoot(this->ctrlr.getJAngle());}
 				self->aiming=false;
 			}
 		}
 		void Archer::shoot(float angle){
 			Arrow shotArrow = new arrow(this->xPos, this->yPos, this->arrowInventory[0], angle);
-			for(int i =1; i<this->inventorySize; i++){
-				this->arrowInventory[i-1]=arrowInventory[i];
-			}
+			for(int i =1; i<this->inventorySize; i++){this->arrowInventory[i-1]=arrowInventory[i];}
 			inventorySize--;
 			shotArrow->angle=angle;
 		}
@@ -148,4 +152,8 @@
 		this->angle =angle;
 		terminalX=5;
 	 	terminalY=7;
+	}
+	void Arrow::refresh(){
+		aim();
+		this->angle =atan((this->yVel/this->yDist))*180/PI;
 	}

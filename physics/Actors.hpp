@@ -1,6 +1,6 @@
 #include <cmath>
 #define PI 3.1415926535897932384626433832795028841971
-
+#include "../hardware/Controller.hpp"
 //PHYSICS CALIBRATION
 	//winSize
 		//KEEP AN EYE OUT FOR UNITIZATION AND INTERNAL RESOLUTION
@@ -25,13 +25,15 @@ class Object{
 	int sprite;
 	int spriteOffset;
 	int distance;
-	float colliderRadius;
+	float colliderWidth;
+	float colliderHeight;
 	float colliderOffset;
 }
 class ActiveObject : public Object{
 	//physics
 	float colliderRadius;
 	float colliderOffset;
+	Controller ctrlr = Controller(ID);
 	bool grounded=false;
 	float xVel;
 	float yVel;
