@@ -29,11 +29,16 @@ class Object{
 	float colliderHeight;
 	float colliderOffset;
 }
+class Wall: public Object{
+	float x1;
+	float y1;
+	float x2;
+	float y2;
+}
 class ActiveObject : public Object{
 	//physics
 	float colliderRadius;
 	float colliderOffset;
-	Controller ctrlr = Controller(ID);
 	bool grounded=false;
 	float xVel;
 	float yVel;
@@ -56,44 +61,39 @@ class ActiveObject : public Object{
 	haltY();
 	haltR();
 }
-	class Archer: public ActiveObject{
-		private:
-			int playerID;
-			int inventorySize;
-			int[8] arrowInventory;
-			//status
-			int dodged; //framecount, 15fm?
-			bool grounded;
-			bool aiming;
-		public:
-			//constructor/destructors
-			Archer();
-			Archer(int PlayerNum);
-			~Archer();
-			//phys
-			refresh();
-			//behaviors
-			catch(Arrow& caughtArrow); //done
-			jump();
-			dodge(float angle);
-			aim(float angle);
-			shoot(float angle);
-	}
-	class Arrow: public ActiveObject{
-		private:
-			int arrowType;
-			float angle;
-		public:
-			//constructor/destructors
-			Arrow();
-			Arrow(int arrowtype);
-			~Arrow();
-			//phys
-			refresh();
-	}
-	class Wall: public Object{
-		float x1;
-		float y1;
-		float x2;
-		float y2;
-	}
+class Archer: public ActiveObject{
+	private:
+		Controller ctrlr = Controller(ID);
+		int playerID;
+		int inventorySize;
+		int[8] arrowInventory;
+		//status
+		int dodged; //framecount, 15fm?
+		bool grounded;
+		bool aiming;
+	public:
+		//constructor/destructors
+		Archer();
+		Archer(int PlayerNum);
+		~Archer();
+		//phys
+		refresh();
+		//behaviors
+		catch(Arrow& caughtArrow); //done
+		jump();
+		dodge(float angle);
+		aim(float angle);
+		shoot(float angle);
+}
+class Arrow: public ActiveObject{
+	private:
+		int arrowType;
+		float angle;
+	public:
+		//constructor/destructors
+		Arrow();
+		Arrow(int arrowtype);
+		~Arrow();
+		//phys
+		refresh();
+}
