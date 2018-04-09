@@ -1,6 +1,5 @@
 #include <cmath>
 #define PI 3.1415926535897932384626433832795028841971
-#include "../hardware/Controller.hpp"
 //PHYSICS CALIBRATION
 	//winSize
 		//KEEP AN EYE OUT FOR UNITIZATION AND INTERNAL RESOLUTION
@@ -20,6 +19,7 @@
 
 //OBJECT DEFINITIONS
 class Object{
+public:
 	float xPos;
 	float yPos;
 	int sprite;
@@ -28,14 +28,14 @@ class Object{
 	float colliderWidth;
 	float colliderHeight;
 	float colliderOffset;
-}
+};
 class Wall: public Object{
 	float x1;
 	float y1;
 	float x2;
 	float y2;
-}
-class ActiveObject : public Object{
+};
+class ActiveObject : public Object{public:
 	//physics
 	float colliderRadius;
 	float colliderOffset;
@@ -51,40 +51,40 @@ class ActiveObject : public Object{
 	//operations
 	ActiveObject(int type);
 	//frame processing:
-	processPhys();
-	applyVel();
-	applyAcc();
-	applyForce(float x, float y);
-	
-	halt();
-	haltX();
-	haltY();
-	haltR();
-}
+	void processPhys();
+	void applyVel();
+	void applyAcc();
+	void applyForce(float x, float y);
+
+	void halt();
+	void haltX();
+	void haltY();
+	void haltR();
+};
 class Archer: public ActiveObject{
-	private:
+	public:
 		Controller ctrlr = Controller(ID);
 		int playerID;
 		int inventorySize;
-		int[8] arrowInventory;
+		int* arrowInventory;
 		//status
 		int dodged; //framecount, 15fm?
 		bool grounded;
 		bool aiming;
-	public:
+	//public:
 		//constructor/destructors
 		Archer();
 		Archer(int PlayerNum);
 		~Archer();
 		//phys
-		refresh();
+		void refresh();
 		//behaviors
-		catch(Arrow& caughtArrow); //done
-		jump();
-		dodge(float angle);
-		aim(float angle);
-		shoot(float angle);
-}
+		void catchArrow(Arrow& caughtArrow);
+		void jump();
+		void dodge(float angle);
+		void aim(float angle);
+		void shoot(float angle);
+};
 class Arrow: public ActiveObject{
 	private:
 		int arrowType;
@@ -95,5 +95,5 @@ class Arrow: public ActiveObject{
 		Arrow(int arrowtype);
 		~Arrow();
 		//phys
-		refresh();
-}
+		void refresh();
+};
