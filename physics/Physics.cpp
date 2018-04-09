@@ -13,15 +13,22 @@
 			//HOW TO CHECK isInstance??
 			//resolve collisions
 			//wall/arrow: arrow halts x,y
-			//wall/player: player halts both- key to wall jump, can wall hang
+				//halt All
+				//grounded=true
+			//wall/player: 
+				//if angle is not down quadrant:
+					//player halts both- key to wall jump, can wall hang
+				//else:
+					//halt the players Y velocity
 			//arrow/player: 
 				//destroy player instance, iff player.dodge==0 && arrowspeed>=fatal
 				//else if dodge, give arrow
 				//else phase arrow
 				//according sound FX
 			//arrow/arrow: halt both, slight upward/rand horizontal speed
-			//player/player: halts along axis of collision
-				//boops
+			//player/player:
+				//if not upper quad: halts along axis of collision
+				//else: kill player bc booperoni
 		}
 	//MOVEMENT APPLICATION
 		void ActiveObject::applyVel(){
@@ -73,9 +80,6 @@
 		void Archer::jump(){this->yVel=JUMPVEL}
 		void Archer::aim(float angle){
 			static int last = false;
-			//while !duck || bBut hit
-			//get controller input
-			//set archer aim at new angle
 			if(bBut){
 				self->aiming=true;
 				aim = angle;
@@ -99,15 +103,14 @@
 			this->dodged=15;
 		}
 //ARROW METHODS
-	//ARROW CONSTRUCTOR
-		void Arrow::Arrow(float xPos,float yPos,int type,float angle){
-			this->xPos=xPos;
-			this->yPos=yPos;
-			this->xVel=ARROWSPEED * cos(angle*PI/180);
-			this->yVel=ARROWSPEED * sin(angle*PI/180);
-			this->yAcc=GRAVMAG;
-			this->xAcc=0;
-			this->angle =angle;
-			terminalX=5;
-		 	terminalY=7;
-		}
+	void Arrow::Arrow(float xPos,float yPos,int type,float angle){
+		this->xPos=xPos;
+		this->yPos=yPos;
+		this->xVel=ARROWSPEED * cos(angle*PI/180);
+		this->yVel=ARROWSPEED * sin(angle*PI/180);
+		this->yAcc=GRAVMAG;
+		this->xAcc=0;
+		this->angle =angle;
+		terminalX=5;
+	 	terminalY=7;
+	}

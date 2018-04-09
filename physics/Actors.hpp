@@ -1,7 +1,10 @@
+#include <cmath>
+#define PI 3.1415926535897932384626433832795028841971
+
 //PHYSICS CALIBRATION
 	//winSize
-			//KEEP AN EYE OUT FOR UNITIZATION AND INTERNAL RESOLUTION
-		#define xSIZE 320
+		//KEEP AN EYE OUT FOR UNITIZATION AND INTERNAL RESOLUTION
+		#define xSIZE 320 //defaults bc of res
 		#define ySIZE 240
 	//calibrate weights
 		#define JUMPMAG 3
@@ -13,7 +16,7 @@
 		#define feather 1;
 		#define bomb 2;
 		#define bomb 3;
-	//insert arrow init velocities
+
 //OBJECT DEFINITIONS
 class ActiveObject{
 	//physics
@@ -21,7 +24,6 @@ class ActiveObject{
 	float colliderOffset;
 	float xPos;
 	float yPos;
-//	float angle;
 	float xVel;
 	float yVel;
 	float rVel;
@@ -55,7 +57,7 @@ class ActiveObject{
 			public:
 				//constructor/destructors
 				Archer();
-				Archer(int PlayerNum)
+				Archer(int PlayerNum);
 				~Archer();
 				//behaviors
 				catch(Arrow& caughtArrow); //done
