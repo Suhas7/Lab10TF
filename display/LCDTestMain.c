@@ -6,12 +6,6 @@
 #include "LCDTests.h"
 
 
-
-
-
-
-
-
 int main(void){unsigned long i=0;
   // Set the clocking to run at 80MHz from the PLL.
   PLL_Init();
@@ -39,13 +33,12 @@ int main(void){unsigned long i=0;
         //will be selected in post-production.
         //NOTE: To return this file to its previous
         //condition, un-comment the following lines in the
-        //SysTick_Handler:
-        touchDebug();
-				//LCD_ColorFill(convertColor(0, 0, 0));
-        //LCD_DrawImage(testSprite, 64,64, 40, 60, 8);
+        SysTick_Handler:
+        //touchDebug();
+        LCD_DrawBMP(testSprite5BPP, 64,64);
+				while(1);
         //Beginning of animated demonstration
-        //while(1);
-				/*for(i=0; i<1000; i=i+1){
+        for(i=0; i<1000; i=i+1){
           RandomRectangles();
         }
         LCD_ColorFill(convertColor(0, 0, 255));
@@ -61,7 +54,7 @@ int main(void){unsigned long i=0;
         }
         for(i=0; i<250; i=i+1){
           RandomCircle();
-        }*/
+        }
         for(i=0; i<6500; i=i+1){
           Random4BPPTestSprite();
         }
