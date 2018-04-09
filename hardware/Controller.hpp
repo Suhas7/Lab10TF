@@ -7,8 +7,10 @@ class Controller{private:
   int bBut;
   int jBut;
   public:
-    Controller()
-
+    Controller();
+    ~Controller();
+    getJAngle();
+    int dbdt;
 }
 
 
