@@ -71,7 +71,20 @@
 			playSound(sByte[4]);
 		}
 		void Archer::jump(){this->yVel=JUMPVEL}
-		//TO IMPLEMENT
+		void Archer::aim(float angle){
+			static int last=false;
+			//while !duck || bBut hit
+			//get controller input
+			//set archer aim at new angle
+			if(bBut){
+				self->aiming=true;
+				aim = angle;
+				last=true
+			}else{
+				if(last){shoot(aim);}
+				self->aiming=false;
+			}
+		}
 		void Archer::shoot(float angle){
 			Arrow shotArrow = new arrow(this->arrowInventory[0]);
 			for(int i =1; i<this->inventorySize; i++){
@@ -80,22 +93,11 @@
 			inventorySize--;
 			shotArrow->angle=angle;
 		}
-		void Archer::aim(float angle){
-			//while !duck || bBut hit
-			//get controller input
-			//set archer aim at new angle
-			if(bBut){
-				self->aiming=true;
-				aim = angle;
-			}else{
-				self->aiming=false;
-			}
-		}
 		void Archer::dodge(float angle){
 			this->xVel = DODGESPEED * cos(angle*PI/180);
 			this->yVel = DODGESPEED * sin(angle*PI/180);
 			this->dodged=15;
 		}
-
+		
 //ARROW FUNCTIONS
 	//ARROW STRUCTORS
