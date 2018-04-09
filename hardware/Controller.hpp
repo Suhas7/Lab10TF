@@ -9,10 +9,12 @@ class Controller{private:
   public:
     Controller();
     ~Controller();
-    getJAngle();
-    getJX();
-    getJY();
-    int dbdt;
+    double getJAngle();
+    double getJX();
+    double getJY();
+    bool getA();
+    bool getB();
+    bool getJ();
 }
 
 

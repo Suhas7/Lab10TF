@@ -1,5 +1,6 @@
 #include <cmath>
 #define PI 3.1415926535897932384626433832795028841971
+
 //PHYSICS CALIBRATION
 	//winSize
 		//KEEP AN EYE OUT FOR UNITIZATION AND INTERNAL RESOLUTION
@@ -19,34 +20,33 @@
 
 //OBJECT DEFINITIONS
 class Object{
-public:
-	float xPos;
-	float yPos;
+	public:
+	double xPos;
+	double yPos;
 	int sprite;
 	int spriteOffset;
 	int distance;
-	float colliderWidth;
-	float colliderHeight;
-	float colliderOffset;
+	double colliderWidth;
+	double colliderHeight;
+	double colliderOffset;
 };
-class Wall: public Object{
-	float x1;
-	float y1;
-	float x2;
-	float y2;
+class Wall: public Object{public:
+	double x1;
+	double y1;
+	double x2;
+	double y2;
 };
 class ActiveObject : public Object{public:
 	//physics
-	float colliderRadius;
-	float colliderOffset;
+	double colliderRadius;
+	double colliderOffset;
 	bool grounded=false;
-	float xVel;
-	float yVel;
-	float rVel;
-	float xAcc;
-	float yAcc;
-	float terminalX;
-	float terminalY;
+	double xVel;
+	double yVel;
+	double xAcc;
+	double yAcc;
+	double terminalX;
+	double terminalY;
 
 	//operations
 	void ActiveObject::ActiveObject();
@@ -55,47 +55,55 @@ class ActiveObject : public Object{public:
 	void processPhys();
 	void applyVel();
 	void applyAcc();
-	void applyForce(float x, float y);
+	void lateralVel(double x);
+	void applyForce(double x, double y);
 
 	void halt();
 	void haltX();
 	void haltY();
 	void haltR();
 };
-class Archer: public ActiveObject{
-	public:
-		Controller ctrlr = Controller(ID);
-		int playerID;
-		int inventorySize;
-		int* arrowInventory;
-		//status
-		bool grounded;
-		bool aiming;
-		int dodged; //framecount, 15fm?
-		float aimAngle;
-	//public:
-		//constructor/destructors
-		Archer();
-		Archer(int PlayerNum);
-		~Archer();
-		//phys
-		void refresh();
-		//behaviors
-		void catchArrow(Arrow& caughtArrow);
-		void jump();
-		void dodge(float angle);
-		void aim(float angle);
-		void shoot(float angle);
+class Archer: public ActiveObject{public:
+	Controller ctrlr = Controller(ID);
+	int playerID;
+	int inventorySize;
+	int* arrowInventory;
+	//status
+	bool grounded;
+	bool aiming;
+	int dodged; //framecount, 15fm?
+	double aimAngle;
+	//constructor/destructors
+	Archer();
+	Archer(int PlayerNum);
+	~Archer();
+	//phys
+	void refresh();
+	//behaviors
+	void catchArrow(Arrow& caughtArrow);
+	void jump();
+	void dodge(double angle);
+	void aim(double angle);
+	void shoot(double angle);
 };
-class Arrow: public ActiveObject{
-	public:
-		int arrowType;
-		float angle;
-	//public:
-		//constructor/destructors
-		Arrow();
-		Arrow(int arrowtype);
-		~Arrow();
-		//phys
-		void refresh();
+class Arrow: public ActiveObject{public:
+	int arrowType;
+	double angle;
+	//constructor/destructors
+	Arrow();
+    void Arrow::Arrow(double xPos,double yPos,int type,double angle);
+	~Arrow();
+	//phys
+	void refresh();
 };
+
+//COLLISION FUNCTIONS
+void serviceCollision(Object& a, Object& b);
+	//HELPER FUNCTIONS
+	void processWallWall(Object& a, Object& b);
+	void processWallArcher(Object& a, ActiveObject& b);
+	void processWallArrow(Object& a, ActiveObject& b);
+	void processArcherArcher(ActiveObject& a,ActiveObject& b);
+	void processArcherArrow(ActiveObject& a, ActiveObject& b);
+	void processArrowArrow(ActiveObject& a, ActiveObject& b);
+	double collisionAngle(Object& a, Object& b);

@@ -11,14 +11,17 @@ void Controller::Controller(int n){
 	this->ID=n;
 }
 
-float Controller::getJAngle(){
-	float x = this->X.Distance();
-	float y = this->Y.Distance()
+double Controller::getJAngle(){
+	double x = this->X.Distance();
+	double y = this->Y.Distance()
 	return atan(y/x)*180/PI;
 }
-float Controller::getJX(){
+double Controller::getJX(){
 	return cJ*this->X.Distance();
 }
-float Controller::getJY(){
+double Controller::getJY(){
 	return cJ*this->Y.Distance();
 }
+bool Controller::getA();
+bool Controller::getB();
+bool Controller::getJ();

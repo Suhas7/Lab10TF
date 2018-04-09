@@ -3,7 +3,7 @@
 #include "/display/kentec.hpp"
 
 //Systick Handler
-void Systick_Handler(){
+void Systick_Handler(){ //60hz
 	//detect collisions
 	for(int i =0; i<num_objects; i++){ //n^2 complexity
 		for(int j =i; j<num_objects;j++){
@@ -14,7 +14,7 @@ void Systick_Handler(){
 	for(int i =0; i<num_objects; i++){
 		objects[i].processPhys();
 		objects[i].refresh();
-		draw(objects);
 	}
+	draw(objects);
 	//decrement nonzero dodge values
 }
