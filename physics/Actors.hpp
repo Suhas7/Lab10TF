@@ -49,7 +49,8 @@ class ActiveObject : public Object{public:
 	float terminalY;
 
 	//operations
-	ActiveObject(int type);
+	void ActiveObject::ActiveObject();
+	void ActiveObject(int type);
 	//frame processing:
 	void processPhys();
 	void applyVel();
@@ -68,9 +69,10 @@ class Archer: public ActiveObject{
 		int inventorySize;
 		int* arrowInventory;
 		//status
-		int dodged; //framecount, 15fm?
 		bool grounded;
 		bool aiming;
+		int dodged; //framecount, 15fm?
+		float aimAngle;
 	//public:
 		//constructor/destructors
 		Archer();
@@ -86,10 +88,10 @@ class Archer: public ActiveObject{
 		void shoot(float angle);
 };
 class Arrow: public ActiveObject{
-	private:
+	public:
 		int arrowType;
 		float angle;
-	public:
+	//public:
 		//constructor/destructors
 		Arrow();
 		Arrow(int arrowtype);

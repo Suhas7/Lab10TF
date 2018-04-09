@@ -64,16 +64,17 @@
 			//arrow/arrow: halt both, slight upward/rand horizontal speed
 			//process angle of collision, send arrows opposite direction w scaled speed
 		double collisionAngle(Object& a, Object& b){
-			float yDist = (a->yPos-b->yPos)*(a->yPos-b->yPos);
-			float xDist = (a->xPos-b->xPos)*(a->xPos-b->xPos);
+			float yDist = (a.yPos-b.yPos)*(a.yPos-b.yPos);
+			float xDist = (a.xPos-b.xPos)*(a.xPos-b.xPos);
 			return atan(yDist/xDist)*180/PI;
 		}
 	//MOVEMENT APPLICATION
+        void ActiveObject::ActiveObject();
 		void ActiveObject::processPhys(){
-			this.applyAcc();
-			this.applyVel();
+			this->applyAcc();
+			this->applyVel();
 			//iff arrow:
-				this.angle=atan(this.yVel/this.xVel); //only for arrows?
+			//	this->angle=atan(this->yVel/this->xVel); //only for arrows?
 		}
 		void ActiveObject::applyVel(){ //increment pos by scaled Vel
 			this->xPos+=this->xVel/60;
@@ -83,9 +84,9 @@
 		}
 		void ActiveObject::applyAcc(){ //increment velocity by scaled Acc
 			this->xVel+=this->xAcc/60;
-			this->xVel %= self->terminalX;
+			this->xVel %= this->terminalX;
 			this->yVel+=this->yAcc/60;
-			this->yVel %= self->terminalY;
+			this->yVel %= this->terminalY;
 		}
 		void ActiveObject::applyForce(float x, float y){
 			this->xAcc+=x;
@@ -113,27 +114,27 @@
 		void Archer::~Archer(){delete[] this->arrowInventory;}
 	//ARCHER BEHAVIOUR
 		void Archer::catchArrow(Arrow& caughtArrow){
-			if(this->inventorySize==4){caughtArrow->halt();return;} //if inventory full, halt arrow and return
-			this->arrowInventory[inventorySize]=caughtArrow->arrowType; //else, add to inventory and destroy
+			if(this->inventorySize==4){caughtArrow.halt();return;} //if inventory full, halt arrow and return
+			this->arrowInventory[inventorySize]=caughtArrow.arrowType; //else, add to inventory and destroy
 			delete caughtArrow;
 			//playSound(sByte[4]);
 		}
 		void Archer::jump(){
-			if(this->grounded) this->yVel=JUMPVEL;
+			if(this->grounded) this->yVel=JUMPMAG;
 		}
 		void Archer::aim(float angle){
 			static int last = false;
 			if(bBut){
-				self->aiming=true;
-				aim = this->ctrlr.getJAngle();
+				this->aiming=true;
+				this->aimAngle = this->ctrlr.getJAngle();
 				last=true;
 			}else{
 				if(last){shoot(this->ctrlr.getJAngle());}
-				self->aiming=false;
+				this->aiming=false;
 			}
 		}
 		void Archer::shoot(float angle){
-			Arrow shotArrow = new Arrow(this->xPos, this->yPos, this->arrowInventory[0], angle);
+			Arrow* shotArrow = new Arrow(this->xPos, this->yPos, this->arrowInventory[0], angle);
 			for(int i =1; i<this->inventorySize; i++){this->arrowInventory[i-1]=arrowInventory[i];}
 			inventorySize--;
 			shotArrow->angle=angle;
@@ -143,12 +144,16 @@
 			this->yVel = DODGESPEED * sin(angle*PI/180);
 			this->dodged=15;
 		}
+        void Archer::refresh(){
+            this->aim(this->ctrlr.getJAngle());
+        }
 //ARROW METHODS
+    void Arrow::Arrow();
 	void Arrow::Arrow(float xPos,float yPos,int type,float angle){
 		this->xPos=xPos;
 		this->yPos=yPos;
-		this->xVel=ARROWSPEED * cos(angle*PI/180);
-		this->yVel=ARROWSPEED * sin(angle*PI/180);
+		this->xVel=(cos(angle*PI/180))*ARROWSPEED;
+		this->yVel=(sin(angle*PI/180))*ARROWSPEED;
 		this->yAcc=GRAVMAG;
 		this->xAcc=0;
 		this->angle =angle;
@@ -156,6 +161,5 @@
 	 	terminalY=7;
 	}
 	void Arrow::refresh(){
-		this.aim();
-		this->angle =atan((this->yVel/this->yDist))*180/PI;
+		this->angle =atan((this->yVel/this->xVel))*180/PI;
 	}
