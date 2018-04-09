@@ -1,5 +1,12 @@
 //TO DOs
-	//CALIBRATE PHYSICS
+	//USER INTERFACING
+		//title screen
+		//game screen
+		//score screen
+	//PHYSICS
+		//CALIBRATE PHYSICS
+		//DESIGN ARCHER GROUNDING IN ACCORDANCE WITH COLLISION DETECTION/HALTING
+	//DISPLAY DRIVER
 	//DESIGN ASSETS
 		//insert default stages
 			const Wall* stage; //stage is defined as a collection of Walls, static

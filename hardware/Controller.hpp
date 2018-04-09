@@ -10,6 +10,8 @@ class Controller{private:
     Controller();
     ~Controller();
     getJAngle();
+    getJX();
+    getJY();
     int dbdt;
 }
 

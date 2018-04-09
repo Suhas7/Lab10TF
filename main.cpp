@@ -2,7 +2,6 @@
 #include "/audio/Sound.hpp"
 #include "/display/kentec.hpp"
 
-
 //Systick Handler
 void Systick_Handler(){
 	//detect collisions
