@@ -7,6 +7,7 @@
 		#define JUMPMAG 3
 		#define GRAVMAG 2
 		#define DODGESPEED 7
+		#define ARROWSPEED 4;
 	//arrow IDs
 		#define normal 0;
 		#define feather 1;
@@ -20,7 +21,7 @@ class ActiveObject{
 	float colliderOffset;
 	float xPos;
 	float yPos;
-	float angle;
+//	float angle;
 	float xVel;
 	float yVel;
 	float rVel;
@@ -66,6 +67,7 @@ class ActiveObject{
 		class Arrow: public ActiveObject{
 			private:
 				int arrowType;
+				float angle;
 			public:
 				//constructor/destructors
 				Arrow();

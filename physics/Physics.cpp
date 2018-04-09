@@ -47,7 +47,7 @@
 		void ActiveObject::haltY() this->YVel=0;
 		void ActiveObject::haltR() this->rVel=0;
 		void ActiveObject::halt(){this->haltX();this->haltY();this->haltR();}
-//ARCHER FUNCTIONS
+//ARCHER METHODS
 	//ARCHER STRUCTORS
 		//TO IMPLEMENT
 		void Archer::Archer(){
@@ -72,7 +72,7 @@
 		}
 		void Archer::jump(){this->yVel=JUMPVEL}
 		void Archer::aim(float angle){
-			static int last=false;
+			static int last = false;
 			//while !duck || bBut hit
 			//get controller input
 			//set archer aim at new angle
@@ -86,7 +86,7 @@
 			}
 		}
 		void Archer::shoot(float angle){
-			Arrow shotArrow = new arrow(this->arrowInventory[0]);
+			Arrow shotArrow = new arrow(this->xPos, this->yPos, this->arrowInventory[0], angle);
 			for(int i =1; i<this->inventorySize; i++){
 				this->arrowInventory[i-1]=arrowInventory[i];
 			}
@@ -98,6 +98,16 @@
 			this->yVel = DODGESPEED * sin(angle*PI/180);
 			this->dodged=15;
 		}
-		
-//ARROW FUNCTIONS
-	//ARROW STRUCTORS
+//ARROW METHODS
+	//ARROW CONSTRUCTOR
+		void Arrow::Arrow(float xPos,float yPos,int type,float angle){
+			this->xPos=xPos;
+			this->yPos=yPos;
+			this->xVel=ARROWSPEED * cos(angle*PI/180);
+			this->yVel=ARROWSPEED * sin(angle*PI/180);
+			this->yAcc=GRAVMAG;
+			this->xAcc=0;
+			this->angle =angle;
+			terminalX=5;
+		 	terminalY=7;
+		}
