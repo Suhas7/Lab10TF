@@ -30,7 +30,12 @@
 			this->yPos+=this->yVel/60;
 			this->yPos %= ySIZE;
 		}
-
+		void ActiveObject::applyAcc(){
+			this->xVel+=this->xAcc/60;
+			this->xVel %= self->terminalX;
+			this->yVel+=this->yAcc/60;
+			this->yVel %= self->terminalY;
+		}
 		void ActiveObject::applyForce(float x, float y){
 			this->xVel+=x;
 			this->xVel %= this->terminalX;
@@ -45,8 +50,19 @@
 //ARCHER FUNCTIONS
 	//ARCHER STRUCTORS
 		//TO IMPLEMENT
-		void Archer::Archer();
-		void Archer::~Archer(); 
+		void Archer::Archer(){
+			static int i=0;
+			this->playerID=i;
+			this->arrowInventory=new int[8]; //is this right lol
+			for(this->inventorySize=0;this->inventorySize<3;this->inventorySize++){ //def arrows
+				this->arrowInventory[this->inventorySize]=0;
+			}
+			for(int in = 3; in<8; in++){this->arrowInventory[in]=-1;}
+			this->dodged=0;
+			this->grounded=true;
+			this->aiming=false;
+		}
+		void Archer::~Archer(){delete[] this->arrowInventory;}
 	//ARCHER BEHAVIOUR
 		void Archer::catch(Arrow& caughtArrow){
 			if(this->inventorySize==4){caughtArrow->halt();return;} //if inventory full, halt arrow and return
@@ -55,7 +71,6 @@
 			playSound(sByte[4]);
 		}
 		void Archer::jump(){this->yVel=JUMPVEL}
-
 		//TO IMPLEMENT
 		void Archer::shoot(float angle){
 			Arrow shotArrow = new arrow(this->arrowInventory[0]);
@@ -69,11 +84,17 @@
 			//while !duck || bBut hit
 			//get controller input
 			//set archer aim at new angle
+			if(bBut){
+				self->aiming=true;
+				aim = angle;
+			}else{
+				self->aiming=false;
+			}
 		}
-		
 		void Archer::dodge(float angle){
-
-
+			this->xVel = DODGESPEED * cos(angle*PI/180);
+			this->yVel = DODGESPEED * sin(angle*PI/180);
+			this->dodged=15;
 		}
 
 //ARROW FUNCTIONS
