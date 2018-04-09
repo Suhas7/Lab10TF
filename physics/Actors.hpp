@@ -12,6 +12,7 @@
 		#define DODGESPEED 7
 		#define ARROWSPEED 4;
 	//arrow IDs
+		#define sentinel -1;
 		#define normal 0;
 		#define feather 1;
 		#define bomb 2;

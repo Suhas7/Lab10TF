@@ -5,60 +5,84 @@
 		void checkCollision(ActiveObject& a, ActiveObject& b){ //check if collider radii cross
 			float xDist = (a->xPos-b->xPos)*(a->xPos-b->xPos);
 			float yDist = (a->yPos-b->yPos)*(a->yPos-b->yPos);
-			float threshold = (a->colliderRadius+b->colliderRadius)*(a->colliderRadius+b->colliderRadius);
-			if(threshold>=(xDist+yDist)) return true;
-			return false;
+			float sDist = (a->colliderRadius+b->colliderRadius);
+			float threshold = sDist*sDist;
+			return threshold>=(xDist+yDist) ? true:false;
 		}
 		void processCollision(ActiveObject& a, ActiveObject& b){ //
 			//HOW TO CHECK isInstance??
 			//resolve collisions
-			//wall/arrow: arrow halts x,y
-				//halt All
-				//grounded=true
+			//bruteforcecase division
+			if(isWall(a)){
+				if(isWall(b)) processWallWall(a,b);
+				if(isArcher(b)) processWallArcher(a, b)
+				if(isArrow(b)) processWallArrow(a, b);
+			}
+			if(isArcher(a)){
+				if(isWall(b)) processWallArcher(b, a);
+				if(isArcher(b)) processArcherArcher(a, b);
+				if(isArrow(b)) processArcherArrow(a, b);
+			}
+			if(isArrow(a)){
+				if(isWall(b)) processWallArrow(b, a);
+				if(isArcher(b)) processArcherArrow(b, a)
+				if(isArrow(b)) processArrowArrow(a, b);
+			}
+		}
+		
+		void processWallWall(ActiveObject& a, ActiveObject& b);
+			//phase thru
+		void processWallArcher(ActiveObject& a, ActiveObject& b);
+			//set angle var to angle of collision
 			//wall/player: 
 				//if angle is not down quadrant:
 					//player halts both- key to wall jump, can wall hang
 				//else:
 					//halt the players Y velocity
-			//arrow/player: 
-				//destroy player instance, iff player.dodge==0 && arrowspeed>=fatal
-				//else if dodge, give arrow
-				//else phase arrow
-				//according sound FX
+		void processWallArrow(ActiveObject& a, ActiveObject& b);
+			//arrow halts x,y
+			//halt arrow
+			//grounded=true
+		void processArcherArcher(ActiveObject& a, ActiveObject& b);
+			//if not upper quad: halts along axis of collision
+			//else: kill player bc booperoni
+		void processArcherArrow(ActiveObject& a, ActiveObject& b);
+			//if grounded || dodge then b.catch(a);
+			//if b.dodge==0 && arrowspeed>=fatal: kill player and stop arrow
+			//else phase arrow
+			//according sound FX
+		void processArrowArrow(ActiveObject& a, ActiveObject& b);
 			//arrow/arrow: halt both, slight upward/rand horizontal speed
-			//player/player:
-				//if not upper quad: halts along axis of collision
-				//else: kill player bc booperoni
-		}
+			//process angular collision?
+
 	//MOVEMENT APPLICATION
 		void ActiveObject::processPhys(){
 			this.applyAcc();
 			this.applyVel();
-			this.angle=atan(this.yVel/this.xVel); //only for arrows?
+			//iff arrow:
+				this.angle=atan(this.yVel/this.xVel); //only for arrows?
 		}
-		void ActiveObject::applyVel(){
+		void ActiveObject::applyVel(){ //increment pos by scaled Vel
 			this->xPos+=this->xVel/60;
 			this->xPos %= xSIZE;
 			this->yPos+=this->yVel/60;
 			this->yPos %= ySIZE;
 		}
-		void ActiveObject::applyAcc(){
+		void ActiveObject::applyAcc(){ //increment velocity by scaled Acc
 			this->xVel+=this->xAcc/60;
 			this->xVel %= self->terminalX;
 			this->yVel+=this->yAcc/60;
 			this->yVel %= self->terminalY;
 		}
 		void ActiveObject::applyForce(float x, float y){
-			this->xVel+=x;
-			this->xVel %= this->terminalX;
-			this->yVel+=y;
-			this->yVel %= this->terminalY;
+			this->xAcc+=x;
+			this->yAcc+=y;
 		}
 	//MOVEMENT ERASURE
 		void ActiveObject::haltX() this->xVel=0;
 		void ActiveObject::haltY() this->YVel=0;
 		void ActiveObject::haltR() this->rVel=0;
-		void ActiveObject::halt(){this->haltX();this->haltY();this->haltR();}
+		void ActiveObject::halt(){ this->haltX();this->haltY();this->haltR();}
 //ARCHER METHODS
 	//ARCHER STRUCTORS
 		//TO IMPLEMENT
@@ -66,7 +90,7 @@
 			static int i=0;
 			this->playerID=i;
 			this->arrowInventory=new int[8]; //is this right lol
-			for(this->inventorySize=0;this->inventorySize<3;this->inventorySize++){ //def arrows
+			for(this->inventorySize=0;this->inventorySize<3;this->inventorySize++){ //default arrows
 				this->arrowInventory[this->inventorySize]=0;
 			}
 			for(int in = 3; in<8; in++){this->arrowInventory[in]=-1;}
@@ -82,7 +106,9 @@
 			delete caughtArrow;
 			playSound(sByte[4]);
 		}
-		void Archer::jump(){this->yVel=JUMPVEL}
+		void Archer::jump(){
+			if(this->grounded) this->yVel=JUMPVEL;
+		}
 		void Archer::aim(float angle){
 			static int last = false;
 			if(bBut){
