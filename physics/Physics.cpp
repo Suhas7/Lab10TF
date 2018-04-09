@@ -31,6 +31,11 @@
 				//else: kill player bc booperoni
 		}
 	//MOVEMENT APPLICATION
+		void ActiveObject::processPhys(){
+			this.applyAcc();
+			this.applyVel();
+			this.angle=atan(this.yVel/this.xVel); //only for arrows?
+		}
 		void ActiveObject::applyVel(){
 			this->xPos+=this->xVel/60;
 			this->xPos %= xSIZE;

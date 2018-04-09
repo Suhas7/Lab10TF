@@ -11,6 +11,6 @@ void Systick_Handler(){
 			if(checkCollision(objects[i], objects[j])) processCollision(objects[i], objects[j]);
 		}
 	}
-	for(int i =0; i<num_objects; i++) applyVel(i)
+	for(int i =0; i<num_objects; i++) objects[i].processPhys();
 	//decrement nonzero dodge values
 }

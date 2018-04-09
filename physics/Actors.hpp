@@ -22,6 +22,7 @@ class ActiveObject{
 	//physics
 	float colliderRadius;
 	float colliderOffset;
+	bool grounded=false;
 	float xPos;
 	float yPos;
 	float xVel;
@@ -34,7 +35,8 @@ class ActiveObject{
 
 	//operations
 	ActiveObject(int type);
-
+	//frame processing:
+	processPhys();
 	applyVel();
 	applyAcc();
 	applyForce(float x, float y);
