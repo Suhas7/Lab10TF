@@ -1,6 +1,6 @@
 #include <cmath>
 #define PI 3.1415926535897932384626433832795028841971
-
+#include "../hardware/Controller.hpp"
 //PHYSICS CALIBRATION
 	//winSize
 		//KEEP AN EYE OUT FOR UNITIZATION AND INTERNAL RESOLUTION
@@ -64,8 +64,8 @@ class ActiveObject : public Object{public:
 	void haltR();
 };
 class Archer: public ActiveObject{public:
-	Controller ctrlr = Controller(ID);
 	int playerID;
+	Controller* ctrlr;
 	int inventorySize;
 	int* arrowInventory;
 	//status

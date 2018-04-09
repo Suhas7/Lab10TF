@@ -1,12 +1,16 @@
 //KEEP AN EYE OUT FOR GETTING STUCK ON WALLS
 #include "Actors.hpp"
-#include "../hardware/Controller.hpp"
+
 //#include <cmath>
 //GENERAL PHYSICS
 	//ISINSTANCE FUNCTIONS
-        bool isWall(Object& in){return dynamic_cast<Wall*>(in) != nullptr; }
-        bool isArcher(Object& in){return (dynamic_cast<Archer*>(in))!=nullptr;}
-        bool isArrow(Object& in){return (dynamic_cast<Arrow*>(in))!=nullptr;}
+		template<typename T, typename K>
+		inline bool isType(const K &k) {
+    		return typeid(T).hash_code() == typeid(k).hash_code();
+		}
+//        bool isType<Wall>(Object& in){return dynamic_cast<Wall*>(in) != nullptr; }
+//        bool isType<Archer>(Object& in){return (dynamic_cast<Archer*>(in))!=nullptr;}
+//        bool isType<Arrow>(Object& in){return (dynamic_cast<Arrow*>(in))!=nullptr;}
 	//MOVEMENT PROCESSING
 		bool checkCollision(Object& a, Object& b){ //check if colliders intersect
 			double xDist = (b.xPos-a.xPos);
@@ -26,25 +30,26 @@
 		void serviceCollision(Object& a, Object& b){ //
 			//resolve collisions
 			//bruteforce case division
-			if(isWall(a)){
-				if(isWall(b)) processWallWall(a,b);
-				if(isArcher(b)) processWallArcher(a, dynamic_cast<Archer&>(b));
-				if(isArrow(b)) processWallArrow(a, dynamic_cast<Arrow&>(b));
+			//dynamic casts cost tho :(
+			if(isType<Wall>(a)){
+				if(isType<Wall>(b)) processWallWall(a,b);
+				if(isType<Archer>(b)) processWallArcher(a, dynamic_cast<Archer&>(b));
+				if(isType<Arrow>(b)) processWallArrow(a, dynamic_cast<Arrow&>(b));
 			}
-			if(isArcher(a)){
-				if(isWall(b)) processWallArcher(b, dynamic_cast<Archer&>(a));
-				if(isArcher(b)) processArcherArcher(dynamic_cast<Archer&>(a), dynamic_cast<Archer&>(b));
-				if(isArrow(b)) processArcherArrow(dynamic_cast<Archer&>(a), dynamic_cast<Arrow&>(b));
+			if(isType<Archer>(a)){
+				if(isType<Wall>(b)) processWallArcher(b, dynamic_cast<Archer&>(a));
+				if(isType<Archer>(b)) processArcherArcher(dynamic_cast<Archer&>(a), dynamic_cast<Archer&>(b));
+				if(isType<Arrow>(b)) processArcherArrow(dynamic_cast<Archer&>(a), dynamic_cast<Arrow&>(b));
 			}
-			if(isArrow(a)){
-				if(isWall(b)) processWallArrow(b, dynamic_cast<Arrow&>(a));
-				if(isArcher(b)) processArcherArrow(dynamic_cast<Archer&>(b), dynamic_cast<Arrow&>(a));
-				if(isArrow(b)) processArrowArrow(dynamic_cast<Arrow&>(a), dynamic_cast<Arrow&>(b));
+			if(isType<Arrow>(a)){
+				if(isType<Wall>(b)) processWallArrow(b, dynamic_cast<Arrow&>(a));
+				if(isType<Archer>(b)) processArcherArrow(dynamic_cast<Archer&>(b), dynamic_cast<Arrow&>(a));
+				if(isType<Arrow>(b)) processArrowArrow(dynamic_cast<Arrow&>(a), dynamic_cast<Arrow&>(b));
 			}
 		}
         void processWallWall(Object& a, Object& b){return;}
         //phase thru?
-        void processWallArcher(Object& a, ActiveObject& b);
+        void processWallArcher(Object& a, Archer& b);
         //set angle var to angle of collision
         //wall/player:
         //if angle is not down quadrant:
@@ -52,19 +57,19 @@
         //else:
         //halt the players Y velocity
         //scale down X velocity
-        void processWallArrow(Object& a, ActiveObject& b);
+        void processWallArrow(Object& a, Arrow& b);
         //arrow halts x,y
         //halt arrow
         //grounded=true
-        void processArcherArcher(ActiveObject& a,ActiveObject& b);
+        void processArcherArcher(Archer& a,Archer& b);
         //if not upper quad: halts along axis of collision
         //else: kill player bc booperoni
-        void processArcherArrow(ActiveObject& a, ActiveObject& b);
+        void processArcherArrow(Archer& a, Arrow& b);
         //if grounded || dodge then b.catchArrow(a);
         //if b.dodge==0 && arrowspeed>=fatal: kill player and stop arrow
         //else phase arrow
         //according sound FX
-        void processArrowArrow(ActiveObject& a, ActiveObject& b);
+        void processArrowArrow(Arrow& a,Arrow& b);
         //arrow/arrow: halt both, slight upward/rand horizontal speed
         //process angle of collision, send arrows opposite direction w scaled speed
         double collisionAngle(Object& a, Object& b){
@@ -108,16 +113,21 @@
 		void Archer::Archer(){
 			static int i=0;
 			this->playerID=i;
+            i++;
+            ctrlr = new Controller(playerID);
 			this->arrowInventory=new int[8]; //is this right lol
 			for(this->inventorySize=0;this->inventorySize<3;this->inventorySize++){ //default arrows
-				this->arrowInventory[this->inventorySize]=0;
+				this->arrowInventory[this->inventorySize]=normal;
 			}
-			for(int in = 3; in<8; in++){this->arrowInventory[in]=-1;}
+			for(int in = 3; in<8; in++){this->arrowInventory[in]=sentinel;}
 			this->dodged=0;
 			this->grounded=true;
 			this->aiming=false;
 		}
-		void Archer::~Archer(){delete[] this->arrowInventory;}
+		void Archer::~Archer(){
+			delete this->ctrlr;
+			delete[] this->arrowInventory;
+		}
 	//ARCHER BEHAVIOUR
 		void Archer::catchArrow(Arrow& caughtArrow){
 			if(this->inventorySize==4){caughtArrow.halt();return;} //if inventory full, halt arrow and return
@@ -130,12 +140,12 @@
 		}
 		void Archer::aim(double angle){
 			static int last = false;
-			if(this->ctrlr.getB()){
+			if(this->ctrlr->getB()){
 				this->aiming=true;
-				this->aimAngle = this->ctrlr.getJAngle();
+				this->aimAngle = this->ctrlr->getJAngle();
 				last=true;
 			}else{
-				if(last){shoot(this->ctrlr.getJAngle());}
+				if(last){shoot(this->ctrlr->getJAngle());}
 				this->aiming=false;
 			}
 		}
@@ -151,9 +161,13 @@
 			this->dodged=15;
 		}
         void Archer::refresh(){
-            if(this->dodged) this->dodged--;        //update dodge status, if nonzero
-            this->aim(this->ctrlr.getJAngle());     //update aim parameter
-
+            if(this->dodged){
+            	this->dodged--;
+            	if(!this->dodged) this->halt();
+            }        //update dodge status, if nonzero
+            if(grounded){yAcc=0;yVel=0;   //set yAcc in accordance w grounding
+            }else{yAcc=GRAVMAG;}
+            this->aim(this->ctrlr->getJAngle());     //update aim parameter
         }
 //ARROW METHODS
     void Arrow::Arrow();
