@@ -16,16 +16,23 @@
 		#define normal 0;
 		#define feather 1;
 		#define bomb 2;
-		#define bomb 3;
+		#define sbomb 3;
 
 //OBJECT DEFINITIONS
-class ActiveObject{
+class Object{
+	float xPos;
+	float yPos;
+	int sprite;
+	int spriteOffset;
+	int distance;
+	float colliderRadius;
+	float colliderOffset;
+}
+class ActiveObject : public Object{
 	//physics
 	float colliderRadius;
 	float colliderOffset;
 	bool grounded=false;
-	float xPos;
-	float yPos;
 	float xVel;
 	float yVel;
 	float rVel;
@@ -47,41 +54,44 @@ class ActiveObject{
 	haltY();
 	haltR();
 }
-	//SUBCLASS DEFINITION
-		class Archer: public ActiveObject{
-			private:
-				int playerID;
-				int inventorySize;
-				int[8] arrowInventory;
-				//status
-				int dodged; //framecount, 15fm?
-				bool grounded;
-				bool aiming;
-			public:
-				//constructor/destructors
-				Archer();
-				Archer(int PlayerNum);
-				~Archer();
-				//behaviors
-				catch(Arrow& caughtArrow); //done
-				jump();
-				dodge(float angle);
-				aim(float angle);
-				shoot(float angle);
-		}
-		class Arrow: public ActiveObject{
-			private:
-				int arrowType;
-				float angle;
-			public:
-				//constructor/destructors
-				Arrow();
-				Arrow(int arrowtype);
-				~Arrow();
-		}
-		class Wall{
-			float x1;
-			float y1;
-			float x2;
-			float y2;
-		}
+	class Archer: public ActiveObject{
+		private:
+			int playerID;
+			int inventorySize;
+			int[8] arrowInventory;
+			//status
+			int dodged; //framecount, 15fm?
+			bool grounded;
+			bool aiming;
+		public:
+			//constructor/destructors
+			Archer();
+			Archer(int PlayerNum);
+			~Archer();
+			//phys
+			refresh();
+			//behaviors
+			catch(Arrow& caughtArrow); //done
+			jump();
+			dodge(float angle);
+			aim(float angle);
+			shoot(float angle);
+	}
+	class Arrow: public ActiveObject{
+		private:
+			int arrowType;
+			float angle;
+		public:
+			//constructor/destructors
+			Arrow();
+			Arrow(int arrowtype);
+			~Arrow();
+			//phys
+			refresh();
+	}
+	class Wall: public Object{
+		float x1;
+		float y1;
+		float x2;
+		float y2;
+	}

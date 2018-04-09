@@ -9,10 +9,10 @@
 			float threshold = sDist*sDist;
 			return threshold>=(xDist+yDist) ? true:false;
 		}
-		void processCollision(ActiveObject& a, ActiveObject& b){ //
+		void serviceCollision(ActiveObject& a, ActiveObject& b){ //
 			//HOW TO CHECK isInstance??
 			//resolve collisions
-			//bruteforcecase division
+			//bruteforce case division
 			if(isWall(a)){
 				if(isWall(b)) processWallWall(a,b);
 				if(isArcher(b)) processWallArcher(a, b)
@@ -31,7 +31,7 @@
 		}
 		
 		void processWallWall(ActiveObject& a, ActiveObject& b);
-			//phase thru
+			//phase thru?
 		void processWallArcher(ActiveObject& a, ActiveObject& b);
 			//set angle var to angle of collision
 			//wall/player: 
@@ -53,8 +53,12 @@
 			//according sound FX
 		void processArrowArrow(ActiveObject& a, ActiveObject& b);
 			//arrow/arrow: halt both, slight upward/rand horizontal speed
-			//process angular collision?
-
+			//process angle of collision, send arrows opposite direction w scaled speed
+		void collisionAngle(ActiveObject& a, ActiveObject& b){
+			float yDist = (a->yPos-b->yPos)*(a->yPos-b->yPos);
+			float xDist = (a->xPos-b->xPos)*(a->xPos-b->xPos);
+			return atan(yDist/xDist)*180/PI;
+		}
 	//MOVEMENT APPLICATION
 		void ActiveObject::processPhys(){
 			this.applyAcc();
